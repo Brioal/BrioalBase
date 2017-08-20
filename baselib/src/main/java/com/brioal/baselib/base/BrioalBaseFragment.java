@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.brioal.baselib.utils.StringUtil;
+import com.brioal.baselib.utils.log.StringUtil;
 
 /**
  * email:brioal@foxmail.com

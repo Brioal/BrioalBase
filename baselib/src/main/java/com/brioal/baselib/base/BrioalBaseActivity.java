@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.brioal.baselib.utils.StringUtil;
+import com.brioal.baselib.utils.log.StringUtil;
 
 /**
  * 封装基类Activity
