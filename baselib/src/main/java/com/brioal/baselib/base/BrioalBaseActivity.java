@@ -8,7 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.brioal.baselib.utils.log.StringUtil;
+import com.brioal.baselib.utils.StringUtil;
+
 
 /**
  * 封装基类Activity
@@ -37,8 +38,9 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        setContentView(getLayoutID());
+        setContentView(id);
         initData();
+        initIDs();
         initView();
         initPresenter();
         doInOnCreateEnd();
@@ -60,27 +62,27 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
     /**
      * 初始化基本数据
      */
-    abstract void initData();
+    protected abstract void initData();
 
     /**
      * 初始化视图
      */
-    abstract void initView();
+    protected abstract void initView();
 
     /**
      * 初始化Presenter
      */
-    abstract void initPresenter();
+    protected abstract void initPresenter();
 
     /**
      * 在Oncreate内的末尾进行的操作
      */
-    abstract void doInOnCreateEnd();
+    protected abstract void doInOnCreateEnd();
 
     /**
      * 在Oncreate内的super之前进行的操作
      */
-    abstract void doInOnCreateBeforeSuper();
+    protected abstract void doInOnCreateBeforeSuper();
 
 
     /**
@@ -88,7 +90,12 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
      *
      * @return
      */
-    abstract int getLayoutID();
+    protected abstract int getLayoutID();
+
+    /**
+     * 实例化组件
+     */
+    protected abstract void initIDs();
 
     /**
      * 显示基本加载进度条

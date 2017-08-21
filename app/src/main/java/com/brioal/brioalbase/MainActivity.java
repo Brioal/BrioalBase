@@ -1,10 +1,12 @@
 package com.brioal.brioalbase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.brioal.baselib.utils.log.BLog;
+import com.brioal.brioalbase.list.TestListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,5 +20,9 @@ public class MainActivity extends AppCompatActivity {
         BLog.title("测试标题");
         BLog.content("大小", "5", "高度", "3");
         BLog.e("测试");
+    }
+
+    public void testAdapter(View view) {
+        startActivity(new Intent(this, TestListActivity.class));
     }
 }

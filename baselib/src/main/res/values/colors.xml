@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteHalf">#70ffffff</color>
+    <color name="colorWhiteBG">#EFEFEF</color>
+
+    <color name="colorTextBlack">#292929</color>
+    <color name="colorTextLightBlack">#939393</color>
+
+    <color name="colorBlack">#aa000000</color>
+    <color name="colorBlackHalfTrans">#aa000000</color>
+</resources>

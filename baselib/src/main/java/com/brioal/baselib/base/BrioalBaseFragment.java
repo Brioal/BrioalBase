@@ -11,7 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.brioal.baselib.utils.log.StringUtil;
+import com.brioal.baselib.utils.StringUtil;
+
 
 /**
  * email:brioal@foxmail.com
@@ -50,6 +51,7 @@ public abstract class BrioalBaseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initData();
+        initIDs();
         initView();
         initPresenter();
     }
@@ -89,6 +91,10 @@ public abstract class BrioalBaseFragment extends Fragment {
      */
     abstract void initPresenter();
 
+    /**
+     * 实例化组件
+     */
+    protected abstract void initIDs();
 
     /**
      * 显示基本加载进度条

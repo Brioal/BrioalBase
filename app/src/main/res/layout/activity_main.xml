@@ -16,6 +16,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="testBLog"/>
+            android:onClick="testBLog"
+            android:text="测试BLog"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testAdapter"
+            android:text="测试BaseAdapter"/>
     </LinearLayout>
 </ScrollView>

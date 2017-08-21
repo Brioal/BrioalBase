@@ -1,0 +1,19 @@
+<resources>
+    <!--基础主题-->
+    <style name="BrioalBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:typeface">serif</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--全屏主题-->
+    <style name="FullTheme" parent="BrioalBaseTheme">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--白色按钮主题-->
+    <style name="WhiteTheme" parent="BrioalBaseTheme">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorButtonNormal">@android:color/white</item>
+    </style>
+</resources>
