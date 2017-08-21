@@ -3,6 +3,7 @@
 ## 基类
 - BrioalBaseActivity
 - BrioalBaseFragment
+- BrioalBaseDialog
 
 ## 监听器
 - BrioalViewOperatorListener
