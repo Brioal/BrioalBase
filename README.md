@@ -12,10 +12,6 @@
 ## 工具类
 - StringUtil
 - BLog
-
-## 资源
-- 颜色
-- 主题
 - NetWorkUtil
 - ScreenUtil
 - VersionUtil
@@ -33,5 +29,9 @@
 - ScreenListener
 - IoUtil
 - NumberUtil
+
+## 资源
+- 颜色
+- 主题
 
 
