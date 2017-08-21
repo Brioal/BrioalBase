@@ -15,8 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.brioal.baselib.base.BrioalBaseDialog;
+import com.brioal.baselib.utils.ScreenUtil;
 import com.brioal.baselib.utils.SoftInputUtil;
-import com.brioal.baselib.utils.WindowsUtil;
 import com.brioal.baselib.utils.log.BLog;
 import com.brioal.brioalbase.list.TestListActivity;
 
@@ -52,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected int getDialogHeight() {
-            return WindowsUtil.getWindowHeight(getContext()) / 2;
+            return ScreenUtil.getScreenHeight(getContext()) / 2;
         }
 
         @Override
         protected int getDialogWidth() {
-            return WindowsUtil.getWindowWidth(getContext());
+            return ScreenUtil.getScreenHeight(getContext());
         }
 
         @Override
