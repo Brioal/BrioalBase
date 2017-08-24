@@ -29,6 +29,7 @@
 - ScreenListener
 - IoUtil
 - NumberUtil
+- CacheUtil
 
 ## 资源
 - 颜色
