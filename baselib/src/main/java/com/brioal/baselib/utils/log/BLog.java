@@ -68,6 +68,20 @@ public final class BLog {
     }
 
     /**
+     * 打印一个标题
+     *
+     * @param object
+     */
+    public static void title(Object object) {
+        if (object == null) {
+            return;
+        }
+        String str = StringUtil.toString(object);
+        String title = "----------------" + str + "----------------";
+        printLog(E, null, title);
+    }
+
+    /**
      * 打印内容
      *
      * @param strs
@@ -102,26 +116,43 @@ public final class BLog {
         printLog(E, null, buffer.toString());
     }
 
+
     /**
-     * 打印标题和内容
+     * 打印内容
      *
-     * @param strs
+     * @param objects
      */
-    public void titleAndContent(String... strs) {
-        if (strs == null) {
+    public static void content(Object... objects) {
+        if (objects == null) {
             return;
         }
-        if (strs.length < 3) {
-            return;
+        StringBuffer buffer = new StringBuffer();
+        for (int i = 0; i < objects.length; i++) {
+            if (i % 2 == 0) {
+
+                String title = StringUtil.toString(objects[i]);
+                if (StringUtil.isAvailable(title)) {
+                    buffer.append(title + " :---------: ");
+                } else {
+                    buffer.append(" null " + " :---------: ");
+                }
+            } else {
+                String content = StringUtil.toString(objects[i]);
+                if (StringUtil.isAvailable(content)) {
+                    buffer.append(content + "");
+                } else {
+                    buffer.append(" null " + "");
+                }
+                if (buffer.toString().isEmpty()) {
+                    return;
+                }
+                printLog(E, null, buffer.toString());
+                buffer = new StringBuffer();
+            }
         }
-        String title = strs[0];
-        title(title);
-        String[] newStrs = new String[strs.length - 1];
-        for (int i = 1; i < strs.length; i++) {
-            newStrs[i - 1] = strs[i];
-        }
-        content(newStrs);
+        printLog(E, null, buffer.toString());
     }
+
 
 
     public static void d(Object msg) {

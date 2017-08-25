@@ -48,4 +48,29 @@ public class StringUtil {
         return buffer.toString();
     }
 
+    /**
+     * 拼接字符串数组
+     *
+     * @param object
+     * @return
+     */
+    public static String toString(Object object) {
+        if (object == null) {
+            return null;
+        }
+        String str = "";
+        if (object instanceof String) {
+            str = (String) object;
+        } else if (object instanceof Integer) {
+            str = ((int) object) + "";
+        } else if (object instanceof Long) {
+            str = ((long) object) + "";
+        } else if (object instanceof Double) {
+            str = ((double) object) + "";
+        } else {
+            str = object.toString();
+        }
+        return str;
+    }
+
 }

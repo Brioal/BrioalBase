@@ -30,6 +30,7 @@
 - IoUtil
 - NumberUtil
 - CacheUtil
+- RegexUtils
 
 ## 资源
 - 颜色
