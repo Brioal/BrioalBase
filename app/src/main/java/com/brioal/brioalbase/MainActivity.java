@@ -15,10 +15,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.brioal.baselib.base.BrioalBaseDialog;
+import com.brioal.baselib.utils.CacheUtil;
 import com.brioal.baselib.utils.ScreenUtil;
 import com.brioal.baselib.utils.SoftInputUtil;
 import com.brioal.baselib.utils.log.BLog;
 import com.brioal.brioalbase.list.TestListActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -113,6 +117,32 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Context getContext() {
             return MainActivity.this;
+        }
+    }
+
+    public void saveCache(View view) {
+        try {
+            Map<String, String> map = new HashMap<>();
+            map.put("1", "1");
+            map.put("2", "2");
+            map.put("3", "3");
+            CacheUtil<Map<String, String>> cacheUtil = new CacheUtil<>();
+            cacheUtil.saveCache(MainActivity.this, map, "Cache");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readChe(View view) {
+        try {
+            CacheUtil<Map<String, String>> cacheUtil = new CacheUtil<>();
+            Map<String, String> map = cacheUtil.getCache(MainActivity.this, "Cache");
+            BLog.title(map.get("1"));
+            BLog.title(map.get("2"));
+            BLog.title(map.get("3"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

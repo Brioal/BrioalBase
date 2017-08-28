@@ -33,5 +33,17 @@
             android:onClick="testDialog"
             android:text="测试BaseDialog"
             android:textAllCaps="false"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="saveCache"
+            android:text="Save Cache"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="readChe"
+            android:text="Read cache"
+            android:textAllCaps="false"/>
     </LinearLayout>
 </ScrollView>

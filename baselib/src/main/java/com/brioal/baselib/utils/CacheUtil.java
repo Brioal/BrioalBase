@@ -6,7 +6,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
-import java.io.Serializable;
 
 /**
  * email:brioal@foxmail.com
@@ -15,35 +14,14 @@ import java.io.Serializable;
  */
 
 public class CacheUtil<T> {
-    class CacheBean implements Serializable {
-        T mResult;
-        long mTime;
-
-        public T getResult() {
-            return mResult;
-        }
-
-        public void setResult(T result) {
-            mResult = result;
-        }
-
-        public long getTime() {
-            return mTime;
-        }
-
-        public void setTime(long time) {
-            mTime = time;
-        }
-    }
 
     /**
-     *
      * @param context
      * @param name
      * @param durationTime 间隔时间
      * @return
      */
-    public T getCache(Context context, String name,long durationTime) {
+    public T getCache(Context context, String name, long durationTime) {
         T result = null;
         try {
             File targetFile = new File(context.getFilesDir().getAbsolutePath() + "/" + name);
@@ -51,7 +29,7 @@ public class CacheUtil<T> {
                 return null;
             }
             String cacheStr = IOUtil.readStr(new FileInputStream(targetFile));
-            CacheBean bean = (CacheBean) SerializeUtil.deSerialize(cacheStr);
+            CacheBean<T> bean = (CacheBean) SerializeUtil.deSerialize(cacheStr);
             if (bean == null) {
                 result = null;
             } else {
@@ -84,7 +62,7 @@ public class CacheUtil<T> {
                 return null;
             }
             String cacheStr = IOUtil.readStr(new FileInputStream(targetFile));
-            CacheBean bean = (CacheBean) SerializeUtil.deSerialize(cacheStr);
+            CacheBean<T> bean = (CacheBean) SerializeUtil.deSerialize(cacheStr);
             if (bean == null) {
                 result = null;
             } else {
