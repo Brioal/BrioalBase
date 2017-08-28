@@ -74,22 +74,22 @@ public abstract class BrioalBaseFragment extends Fragment {
      *
      * @return
      */
-    abstract int getLayoutID();
+    protected abstract int getLayoutID();
 
     /**
      * 初始化基本数据
      */
-    abstract void initData();
+    protected abstract void initData();
 
     /**
      * 初始化视图
      */
-    abstract void initView();
+    protected abstract void initView();
 
     /**
      * 初始化Presenter
      */
-    abstract void initPresenter();
+    protected abstract void initPresenter();
 
     /**
      * 实例化组件
