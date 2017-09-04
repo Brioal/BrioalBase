@@ -17,8 +17,8 @@ public class DateFormatUtil {
      * @param time
      * @return
      */
-    public static String formartLongTime(long time) {
-        return formartLongTime(time, "yyyy/mm/DD HH:MM:SS");
+    public static String formatLongTime(long time) {
+        return formatLongTime(time, "yyyy/MM/dd hh:mm:ss");
     }
 
     /**
@@ -28,7 +28,7 @@ public class DateFormatUtil {
      * @param format
      * @return
      */
-    public static String formartLongTime(long time, String format) {
+    public static String formatLongTime(long time, String format) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(format);
         try {
             return dateFormat.format(time);

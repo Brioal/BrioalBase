@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BrioalBase.iml" filepath="$PROJECT_DIR$/BrioalBase.iml" />
+      <module fileurl="file://D:\AndroidProjects\BrioalBase\BrioalBase.iml" filepath="D:\AndroidProjects\BrioalBase\BrioalBase.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\AndroidProjects\BrioalBase\app\app.iml" filepath="D:\AndroidProjects\BrioalBase\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
+      <module fileurl="file://D:\AndroidProjects\BrioalBase\baselib\baselib.iml" filepath="D:\AndroidProjects\BrioalBase\baselib\baselib.iml" />
     </modules>
   </component>
 </project>

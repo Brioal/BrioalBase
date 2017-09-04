@@ -16,6 +16,7 @@ import android.widget.EditText;
 
 import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.utils.CacheUtil;
+import com.brioal.baselib.utils.DateFormatUtil;
 import com.brioal.baselib.utils.ScreenUtil;
 import com.brioal.baselib.utils.SoftInputUtil;
 import com.brioal.baselib.utils.log.BLog;
@@ -30,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        testDataFormat();
+    }
+
+    /**
+     * 测试日期格式化工具
+     */
+    private void testDataFormat() {
+        BLog.content("DateFormatUtil.formatLongTime(System.currentTimeMillis())", DateFormatUtil.formatLongTime(System.currentTimeMillis()));
     }
 
     public void testBLog(View view) {
