@@ -1,5 +1,7 @@
 package com.brioal.baselib.utils;
 
+import com.brioal.baselib.utils.log.BLog;
+
 import java.util.List;
 
 /**
@@ -23,6 +25,16 @@ public class ListUtil {
             return false;
         }
         return true;
+    }
 
+    /**
+     * 输出List内容
+     *
+     * @param list
+     */
+    public static void log(List list) {
+        for (int i = 0; i < list.size(); i++) {
+            BLog.content("List内容:" + (i + 1) + ".", list.get(i));
+        }
     }
 }
