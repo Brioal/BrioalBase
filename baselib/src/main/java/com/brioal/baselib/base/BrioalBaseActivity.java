@@ -2,13 +2,17 @@ package com.brioal.baselib.base;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.brioal.baselib.utils.SerializeUtil;
 import com.brioal.baselib.utils.StringUtil;
+import com.brioal.baselib.utils.log.BLog;
 
 
 /**
@@ -44,6 +48,33 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
         initView();
         initPresenter();
         doInOnCreateEnd();
+        initReceiver();
+    }
+
+    /**
+     * 注册广播
+     */
+    private void initReceiver() {
+        BrioalBaseBroadCastReceiver receiver = getReceiver();
+        if (receiver == null) {
+            return;
+        }
+        //取消注册
+        try {
+            unregisterReceiver(receiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //注册
+        try {
+            IntentFilter filter = new IntentFilter();
+            String action = receiver.getAction();
+            BLog.title(action);
+            filter.addAction(action);
+            registerReceiver(receiver, filter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -126,4 +157,28 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 返回要注册的广播
+     *
+     * @return
+     */
+    protected abstract BrioalBaseBroadCastReceiver getReceiver();
+
+    /**
+     * 发送信息给指定的Receiver
+     *
+     * @param receiver
+     * @param object
+     */
+    protected void sendBroadCastMsg(BrioalBaseBroadCastReceiver receiver, Object object) {
+        try {
+            String action = receiver.getAction();
+            Intent intent = new Intent(action);
+            String msg = SerializeUtil.serialize(object);
+            intent.putExtra("Msg", msg);
+            sendBroadcast(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

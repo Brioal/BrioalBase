@@ -2,6 +2,8 @@ package com.brioal.baselib.base;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -11,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.brioal.baselib.utils.SerializeUtil;
 import com.brioal.baselib.utils.StringUtil;
+import com.brioal.baselib.utils.log.BLog;
 
 
 /**
@@ -54,6 +58,33 @@ public abstract class BrioalBaseFragment extends Fragment {
         initIDs();
         initView();
         initPresenter();
+        initReceiver();
+    }
+
+    /**
+     * 注册Receiver
+     */
+    private void initReceiver() {
+        BrioalBaseBroadCastReceiver receiver = getReceiver();
+        if (receiver == null) {
+            return;
+        }
+        //取消注册
+        try {
+            getContext().unregisterReceiver(receiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //注册
+        try {
+            IntentFilter filter = new IntentFilter();
+            String action = receiver.getAction();
+            BLog.title(action);
+            filter.addAction(action);
+            getContext().registerReceiver(receiver, filter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -124,5 +155,25 @@ public abstract class BrioalBaseFragment extends Fragment {
             mInterProgressDialog.dismiss();
         }
     }
+
+    /**
+     * 发送信息给指定的Receiver
+     *
+     * @param receiver
+     * @param object
+     */
+    protected void sendBroadCastMsg(BrioalBaseBroadCastReceiver receiver, Object object) {
+        try {
+            String action = receiver.getAction();
+            Intent intent = new Intent(action);
+            String msg = SerializeUtil.serialize(object);
+            intent.putExtra("Msg", msg);
+            getContext().sendBroadcast(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected abstract BrioalBaseBroadCastReceiver getReceiver();
 
 }

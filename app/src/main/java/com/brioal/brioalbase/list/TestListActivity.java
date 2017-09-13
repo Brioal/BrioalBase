@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.brioal.baselib.base.BrioalBaseActivity;
+import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
 import com.brioal.brioalbase.R;
 
 import java.util.ArrayList;
@@ -63,5 +64,10 @@ public class TestListActivity extends BrioalBaseActivity {
     @Override
     protected void initIDs() {
         mRecyclerView = (RecyclerView) findViewById(R.id.list_recyclerView);
+    }
+
+    @Override
+    protected BrioalBaseBroadCastReceiver getReceiver() {
+        return null;
     }
 }

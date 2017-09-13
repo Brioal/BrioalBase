@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.brioal.baselib.base.BrioalBaseActivity;
+import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
 import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.utils.CacheUtil;
 import com.brioal.baselib.utils.DateFormatUtil;
@@ -22,16 +22,50 @@ import com.brioal.baselib.utils.ScreenUtil;
 import com.brioal.baselib.utils.SoftInputUtil;
 import com.brioal.baselib.utils.log.BLog;
 import com.brioal.brioalbase.list.TestListActivity;
+import com.brioal.brioalbase.receivetest.ReceiverTestActivity;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BrioalBaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView() {
         testDataFormat();
+    }
+
+    @Override
+    protected void initPresenter() {
+
+    }
+
+    @Override
+    protected void doInOnCreateEnd() {
+
+    }
+
+    @Override
+    protected void doInOnCreateBeforeSuper() {
+
+    }
+
+    @Override
+    protected int getLayoutID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initIDs() {
+
+    }
+
+    @Override
+    protected BrioalBaseBroadCastReceiver getReceiver() {
+        return null;
     }
 
     /**
@@ -150,4 +184,10 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    public void testReceiver(View view) {
+        Intent intent = new Intent(mContext, ReceiverTestActivity.class);
+        startActivity(intent);
+    }
+
 }

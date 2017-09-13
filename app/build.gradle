@@ -29,4 +29,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(":baselib")
 
+    compile 'com.android.support:design:26.0.0-alpha1'
 }

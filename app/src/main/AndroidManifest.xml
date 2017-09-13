@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".list.TestListActivity"/>
+        <activity android:name=".receivetest.ReceiverTestActivity">
+        </activity>
     </application>
 
 </manifest>
