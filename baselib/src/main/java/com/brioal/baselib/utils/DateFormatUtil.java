@@ -12,13 +12,13 @@ import java.util.Date;
 
 public class DateFormatUtil {
     /**
-     * 格式化成标准日期
+     * 格式化成标准日期HH
      *
      * @param time
      * @return
      */
     public static String formatLongTime(long time) {
-        return formatLongTime(time, "yyyy/MM/dd hh:mm:ss");
+        return formatLongTime(time, "yyyy/MM/dd HH:mm:ss");
     }
 
     /**
