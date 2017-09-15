@@ -18,10 +18,15 @@ import android.view.WindowManager;
 public abstract class BrioalBaseDialog {
     private AlertDialog mAlertDialog;
     protected View mRootView;
+    protected Context mContext;
+    public BrioalBaseDialog(Context context) {
+        mContext = context;
+        init();
+    }
 
-    public BrioalBaseDialog() {
+    private void init() {
         //实例化
-        mAlertDialog = new AlertDialog.Builder(getContext()).create();
+        mAlertDialog = new AlertDialog.Builder(mContext).create();
         //设置显示监听器
         mAlertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
@@ -47,7 +52,7 @@ public abstract class BrioalBaseDialog {
         if (getLayoutID() == -1) {
             return;
         }
-        mRootView = LayoutInflater.from(getContext()).inflate(getLayoutID(), null, false);
+        mRootView = LayoutInflater.from(mContext).inflate(getLayoutID(), null, false);
         Window window = mAlertDialog.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         bindView(mRootView);
@@ -65,6 +70,7 @@ public abstract class BrioalBaseDialog {
             window.setWindowAnimations(getWindowAnimations());
         }
     }
+
 
     /**
      * 显示Dialog
@@ -154,11 +160,4 @@ public abstract class BrioalBaseDialog {
      * @return
      */
     protected abstract int getLayoutID();
-
-    /**
-     * 返回上下文对象
-     *
-     * @return
-     */
-    protected abstract Context getContext();
 }
