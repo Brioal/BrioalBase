@@ -39,8 +39,8 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
         }
         initData();
         initIDs();
-        initView();
         initPresenter();
+        initView();
         doInOnCreateEnd();
         initReceiver();
     }

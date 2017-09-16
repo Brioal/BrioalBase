@@ -55,8 +55,8 @@ public abstract class BrioalBaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initData();
         initIDs();
-        initView();
         initPresenter();
+        initView();
         initReceiver();
     }
 
