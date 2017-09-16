@@ -34,14 +34,9 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
         int id = getLayoutID();
-        if (id == -1) {
-            try {
-                throw new Exception("布局资源为空");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if (id != 0) {
+            setContentView(id);
         }
-        setContentView(id);
         initData();
         initIDs();
         initView();
