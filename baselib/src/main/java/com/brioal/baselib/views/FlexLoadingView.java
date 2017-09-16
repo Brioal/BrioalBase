@@ -14,8 +14,6 @@ import android.util.AttributeSet;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 
-import com.brioal.baselib.utils.log.BLog;
-
 /**
  * email:brioal@foxmail.com
  * github:https://github.com/Brioal
@@ -155,7 +153,6 @@ public class FlexLoadingView extends android.support.v7.widget.AppCompatImageVie
         //指定高度的方块
         RectF topRectf = new RectF(0, 0, mWidth, mCurrentFlexOffset);
         RectF bottomRectf = new RectF(0, mHeight - mCurrentFlexOffset, mWidth, mHeight);
-        BLog.title(mCurrentFlexOffset + "");
         //绘制
         canvas.drawRect(topRectf, mPaint);
         canvas.drawRect(bottomRectf, mPaint);
