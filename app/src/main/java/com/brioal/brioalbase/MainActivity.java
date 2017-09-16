@@ -80,7 +80,7 @@ public class MainActivity extends BrioalBaseActivity {
     }
 
     public void testDialog(View view) {
-        showProgressDialog("测试Dialog");
+        showBaseProgressDialog("测试Dialog");
     }
 
 

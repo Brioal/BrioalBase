@@ -127,7 +127,7 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
      *
      * @param msg
      */
-    protected void showProgressDialog(String msg) {
+    protected void showBaseProgressDialog(String msg) {
         try {
             if (msg == null) {
                 return;
@@ -138,7 +138,7 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
                     mLoadingDialog = new FlexLoadingDialog(mContext);
                 }
             }
-            mLoadingDialog.setMessage(msg).showDialog();
+            mLoadingDialog.setMessage(msg).setCanCancle(isDialogCanCancel()).showDialog();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -147,7 +147,7 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
     /**
      * 隐藏进度条
      */
-    protected void hideProgreddDialog() {
+    protected void hideBaseProgreddDialog() {
         try {
             if (mLoadingDialog == null) {
                 return;
@@ -189,4 +189,11 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
      * @return
      */
     protected abstract BrioalBaseDialog getLoadingDialog();
+
+    /**
+     * 是否能被取消
+     *
+     * @return
+     */
+    protected abstract boolean isDialogCanCancel();
 }
