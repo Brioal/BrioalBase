@@ -150,7 +150,7 @@ public abstract class BrioalBaseFragment extends Fragment {
      *
      * @param msg
      */
-    protected void showProgressDialog(String msg) {
+    protected void showBaseProgressDialog(String msg) {
         try {
             if (msg == null) {
                 return;
@@ -161,7 +161,7 @@ public abstract class BrioalBaseFragment extends Fragment {
                     mLoadingDialog = new FlexLoadingDialog(mContext);
                 }
             }
-            mLoadingDialog.setMessage(msg).showDialog();
+            mLoadingDialog.setMessage(msg).setCanCancle(isDialogCanCancel()).showDialog();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -170,7 +170,7 @@ public abstract class BrioalBaseFragment extends Fragment {
     /**
      * 隐藏进度条
      */
-    protected void hideProgreddDialog() {
+    protected void hideBaseProgreddDialog() {
         try {
             if (mLoadingDialog == null) {
                 return;
@@ -190,5 +190,12 @@ public abstract class BrioalBaseFragment extends Fragment {
      * @return
      */
     protected abstract BrioalBaseDialog getLoadingDialog();
+
+    /**
+     * 是否能被取消
+     *
+     * @return
+     */
+    protected abstract boolean isDialogCanCancel();
 
 }
