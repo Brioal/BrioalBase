@@ -111,4 +111,15 @@ public class MainActivity extends BrioalBaseActivity {
         startActivity(intent);
     }
 
+    public void saveShare(View view) {
+        MainShareUtil shareUtil = new MainShareUtil(mContext);
+        shareUtil.saveName("Brioal");
+    }
+
+    public void readShare(View view) {
+        MainShareUtil shareUtil = new MainShareUtil(mContext);
+        String name = shareUtil.readName();
+        showToast(name);
+    }
+
 }

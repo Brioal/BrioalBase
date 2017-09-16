@@ -54,5 +54,19 @@
             android:onClick="testReceiver"
             android:text="Test Receiver"
             android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="saveShare"
+            android:text="Save SharePreference"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="readShare"
+            android:text="Read SharePreference"
+            android:textAllCaps="false"/>
     </LinearLayout>
 </ScrollView>
