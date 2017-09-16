@@ -18,8 +18,8 @@ import com.brioal.baselib.utils.StringUtil;
  * Created by Brioal on 2017/9/15.
  */
 public class FlexLoadingDialog extends BrioalBaseDialog {
-    private FlexLoadingView mFlexLoadingView;
-    private TextView mTvMsg;
+    protected FlexLoadingView mFlexLoadingView;
+    protected TextView mTvMsg;
 
     public FlexLoadingDialog(Context context) {
         super(context);
