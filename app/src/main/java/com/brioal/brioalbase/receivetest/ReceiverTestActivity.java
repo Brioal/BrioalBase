@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import com.brioal.baselib.base.BrioalBaseActivity;
 import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
+import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.interfaces.BrioalOnReceivedListener;
 import com.brioal.baselib.utils.log.BLog;
 import com.brioal.brioalbase.PersonBean;
@@ -73,6 +74,11 @@ public class ReceiverTestActivity extends BrioalBaseActivity implements BrioalOn
     @Override
     protected BrioalBaseBroadCastReceiver getReceiver() {
         return new ActivityBroadCastReceiver(this);
+    }
+
+    @Override
+    protected BrioalBaseDialog getLoadingDialog() {
+        return null;
     }
 
     @Override

@@ -19,9 +19,34 @@ public abstract class BrioalBaseDialog {
     private AlertDialog mAlertDialog;
     protected View mRootView;
     protected Context mContext;
+    protected String mMessage;
+    private boolean canCancle = true;
+
     public BrioalBaseDialog(Context context) {
         mContext = context;
-        init();
+    }
+
+    /**
+     * 设置提示信息
+     *
+     * @param message
+     * @return
+     */
+    public BrioalBaseDialog setMessage(String message) {
+        mMessage = message;
+        return this;
+    }
+
+
+    /**
+     * 设置能否返回
+     *
+     * @param canCancle
+     * @return
+     */
+    public BrioalBaseDialog setCanCancle(boolean canCancle) {
+        this.canCancle = canCancle;
+        return this;
     }
 
     private void init() {
@@ -63,12 +88,13 @@ public abstract class BrioalBaseDialog {
         if (getDialogBackGround() != null) {
             window.setBackgroundDrawable(getDialogBackGround());
         }
-        if (getDialogWidth() != -1 && getDialogHeight() != -1) {
+        if (getDialogWidth() != 0 && getDialogHeight() != 0) {
             window.setLayout(getDialogWidth(), getDialogHeight());
         }
         if (getWindowAnimations() != -1) {
             window.setWindowAnimations(getWindowAnimations());
         }
+        mAlertDialog.setCancelable(canCancle);
     }
 
 
@@ -76,6 +102,7 @@ public abstract class BrioalBaseDialog {
      * 显示Dialog
      */
     public void showDialog() {
+        init();
         if (mAlertDialog != null && !mAlertDialog.isShowing()) {
             mAlertDialog.show();
         }

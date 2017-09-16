@@ -1,16 +1,16 @@
-package com.brioal.brioalbase;
+package com.brioal.baselib.views;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.TextView;
 
+import com.brioal.baselib.R;
 import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.utils.ScreenUtil;
-import com.brioal.baselib.views.FlexLoadingView;
+import com.brioal.baselib.utils.StringUtil;
 
 /**
  * email:brioal@foxmail.com
@@ -19,6 +19,7 @@ import com.brioal.baselib.views.FlexLoadingView;
  */
 public class FlexLoadingDialog extends BrioalBaseDialog {
     private FlexLoadingView mFlexLoadingView;
+    private TextView mTvMsg;
 
     public FlexLoadingDialog(Context context) {
         super(context);
@@ -63,8 +64,13 @@ public class FlexLoadingDialog extends BrioalBaseDialog {
     @Override
     protected void bindView(View contentView) {
         mFlexLoadingView = contentView.findViewById(R.id.dialog_flex_loading_view);
-//        mFlexLoadingView.setBackSrc(mContext.getResources().getDrawable(R.drawable.bg_gra_three)).setLinesCount(5);
-        mFlexLoadingView.setBackSrc(new ColorDrawable(Color.BLUE)).setLinesCount(5);
+        mTvMsg = contentView.findViewById(R.id.dialog_flex_loading_text);
+        mFlexLoadingView.setBackSrc(mContext.getResources().getDrawable(R.drawable.bg_gra_three)).setLinesCount(5);
+        if (StringUtil.isAvailable(mMessage)) {
+            mTvMsg.setText(mMessage + "");
+        } else {
+            mTvMsg.setText("正在加载,请稍等");
+        }
     }
 
     @Override

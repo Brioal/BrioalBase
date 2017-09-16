@@ -18,7 +18,7 @@ public class DateFormatUtil {
      * @return
      */
     public static String formatLongTime(long time) {
-        return formatLongTime(time, "yyyy/MM/dd HH:mm:ss");
+        return formatLongTime(time, "yyyy/MM/dd hh:mm:ss");
     }
 
     /**

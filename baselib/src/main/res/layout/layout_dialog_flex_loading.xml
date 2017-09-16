@@ -4,14 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <com.brioal.baselib.views.FlexLoadingView
-        android:layout_width="match_parent"
         android:id="@+id/dialog_flex_loading_view"
+        android:layout_width="match_parent"
         android:layout_height="60dp"/>
 
     <TextView
+        android:id="@+id/dialog_flex_loading_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

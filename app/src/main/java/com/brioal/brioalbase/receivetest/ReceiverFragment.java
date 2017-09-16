@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
+import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.base.BrioalBaseFragment;
 import com.brioal.baselib.interfaces.BrioalOnReceivedListener;
 import com.brioal.baselib.utils.log.BLog;
@@ -62,6 +63,11 @@ public class ReceiverFragment extends BrioalBaseFragment implements BrioalOnRece
     @Override
     protected BrioalBaseBroadCastReceiver getReceiver() {
         return new FragmentReceiver(this);
+    }
+
+    @Override
+    protected BrioalBaseDialog getLoadingDialog() {
+        return null;
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.brioal.baselib.base.BrioalBaseActivity;
 import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
+import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.brioalbase.R;
 
 import java.util.ArrayList;
@@ -68,6 +69,11 @@ public class TestListActivity extends BrioalBaseActivity {
 
     @Override
     protected BrioalBaseBroadCastReceiver getReceiver() {
+        return null;
+    }
+
+    @Override
+    protected BrioalBaseDialog getLoadingDialog() {
         return null;
     }
 }

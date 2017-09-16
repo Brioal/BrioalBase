@@ -1,6 +1,5 @@
 package com.brioal.baselib.base;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -14,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.brioal.baselib.utils.SerializeUtil;
-import com.brioal.baselib.utils.StringUtil;
 import com.brioal.baselib.utils.log.BLog;
+import com.brioal.baselib.views.FlexLoadingDialog;
 
 
 /**
@@ -29,7 +28,7 @@ public abstract class BrioalBaseFragment extends Fragment {
     private Toast mToast;
     protected View mRootView;//根View
     protected Handler mHandler = new Handler();
-    private ProgressDialog mInterProgressDialog = null;
+    private BrioalBaseDialog mLoadingDialog = null;
 
     @Nullable
     @Override
@@ -127,34 +126,6 @@ public abstract class BrioalBaseFragment extends Fragment {
      */
     protected abstract void initIDs();
 
-    /**
-     * 显示基本加载进度条
-     *
-     * @param title
-     * @param msg
-     */
-    protected void showProgressDialog(String title, String msg) {
-        if (mInterProgressDialog != null && mInterProgressDialog.isShowing()) {
-            mInterProgressDialog.dismiss();
-        }
-        mInterProgressDialog = new ProgressDialog(mContext);
-        if (StringUtil.isAvailable(title)) {
-            mInterProgressDialog.setTitle(title);
-        }
-        if (StringUtil.isAvailable(msg)) {
-            mInterProgressDialog.setMessage(msg);
-        }
-        mInterProgressDialog.show();
-    }
-
-    /**
-     * 隐藏进度条
-     */
-    protected void hideProgreddDialog() {
-        if (mInterProgressDialog != null && mInterProgressDialog.isShowing()) {
-            mInterProgressDialog.dismiss();
-        }
-    }
 
     /**
      * 发送信息给指定的Receiver
@@ -174,6 +145,50 @@ public abstract class BrioalBaseFragment extends Fragment {
         }
     }
 
+    /**
+     * 显示基本加载进度条
+     *
+     * @param msg
+     */
+    protected void showProgressDialog(String msg) {
+        try {
+            if (msg == null) {
+                return;
+            }
+            if (mLoadingDialog == null) {
+                mLoadingDialog = getLoadingDialog();
+                if (mLoadingDialog == null) {
+                    mLoadingDialog = new FlexLoadingDialog(mContext);
+                }
+            }
+            mLoadingDialog.setMessage(msg).showDialog();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 隐藏进度条
+     */
+    protected void hideProgreddDialog() {
+        try {
+            if (mLoadingDialog == null) {
+                return;
+            }
+            mLoadingDialog.hideDialog();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     protected abstract BrioalBaseBroadCastReceiver getReceiver();
+
+    /**
+     * 返回要显示的LoadDialog
+     *
+     * @return
+     */
+    protected abstract BrioalBaseDialog getLoadingDialog();
 
 }

@@ -1,6 +1,5 @@
 package com.brioal.baselib.base;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,8 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.brioal.baselib.utils.SerializeUtil;
-import com.brioal.baselib.utils.StringUtil;
 import com.brioal.baselib.utils.log.BLog;
+import com.brioal.baselib.views.FlexLoadingDialog;
 
 
 /**
@@ -26,7 +25,7 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
     protected Context mContext;
     private Toast mToast;
     protected Handler mHandler = new Handler();
-    private ProgressDialog mInterProgressDialog = null;
+    private BrioalBaseDialog mLoadingDialog = null;
 
 
     @Override
@@ -131,29 +130,36 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
     /**
      * 显示基本加载进度条
      *
-     * @param title
      * @param msg
      */
-    protected void showProgressDialog(String title, String msg) {
-        if (mInterProgressDialog != null && mInterProgressDialog.isShowing()) {
-            mInterProgressDialog.dismiss();
+    protected void showProgressDialog(String msg) {
+        try {
+            if (msg == null) {
+                return;
+            }
+            if (mLoadingDialog == null) {
+                mLoadingDialog = getLoadingDialog();
+                if (mLoadingDialog == null) {
+                    mLoadingDialog = new FlexLoadingDialog(mContext);
+                }
+            }
+            mLoadingDialog.setMessage(msg).showDialog();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        mInterProgressDialog = new ProgressDialog(mContext);
-        if (StringUtil.isAvailable(title)) {
-            mInterProgressDialog.setTitle(title);
-        }
-        if (StringUtil.isAvailable(msg)) {
-            mInterProgressDialog.setMessage(msg);
-        }
-        mInterProgressDialog.show();
     }
 
     /**
      * 隐藏进度条
      */
     protected void hideProgreddDialog() {
-        if (mInterProgressDialog != null && mInterProgressDialog.isShowing()) {
-            mInterProgressDialog.dismiss();
+        try {
+            if (mLoadingDialog == null) {
+                return;
+            }
+            mLoadingDialog.hideDialog();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -181,4 +187,11 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 返回要显示的LoadingDialog
+     *
+     * @return
+     */
+    protected abstract BrioalBaseDialog getLoadingDialog();
 }

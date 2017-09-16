@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.brioal.baselib.base.BrioalBaseActivity;
 import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
+import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.utils.CacheUtil;
 import com.brioal.baselib.utils.DateFormatUtil;
 import com.brioal.baselib.utils.ListUtil;
@@ -56,6 +57,11 @@ public class MainActivity extends BrioalBaseActivity {
         return null;
     }
 
+    @Override
+    protected BrioalBaseDialog getLoadingDialog() {
+        return null;
+    }
+
     /**
      * 测试日期格式化工具
      */
@@ -74,8 +80,7 @@ public class MainActivity extends BrioalBaseActivity {
     }
 
     public void testDialog(View view) {
-        FlexLoadingDialog dialog = new FlexLoadingDialog(mContext);
-        dialog.showDialog();
+        showProgressDialog("测试Dialog");
     }
 
 
