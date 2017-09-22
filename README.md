@@ -12,7 +12,7 @@
 ## Step 2. Add the dependency
 ```
 	dependencies {
-		compile 'com.github.User:Repo:Tag'
+		com.github.Brioal:BrioalBase:3.3
 	}
 ```
 ## 基类
