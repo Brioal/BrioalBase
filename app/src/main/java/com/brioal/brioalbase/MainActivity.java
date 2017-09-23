@@ -62,6 +62,11 @@ public class MainActivity extends BrioalBaseActivity {
         return null;
     }
 
+    @Override
+    protected boolean isDialogCanCancel() {
+        return false;
+    }
+
     /**
      * 测试日期格式化工具
      */
@@ -80,6 +85,11 @@ public class MainActivity extends BrioalBaseActivity {
     }
 
     public void testDialog(View view) {
+        MainDialog dialog = new MainDialog(mContext);
+        dialog.showDialog();
+    }
+
+    public void testLoadingVIew(View view) {
         showBaseProgressDialog("测试Dialog");
     }
 

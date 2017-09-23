@@ -76,4 +76,9 @@ public class TestListActivity extends BrioalBaseActivity {
     protected BrioalBaseDialog getLoadingDialog() {
         return null;
     }
+
+    @Override
+    protected boolean isDialogCanCancel() {
+        return false;
+    }
 }

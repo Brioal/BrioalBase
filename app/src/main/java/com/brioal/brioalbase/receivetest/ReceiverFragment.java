@@ -71,6 +71,11 @@ public class ReceiverFragment extends BrioalBaseFragment implements BrioalOnRece
     }
 
     @Override
+    protected boolean isDialogCanCancel() {
+        return false;
+    }
+
+    @Override
     public void OnReceived(PersonBean result) {
         BLog.content("Fragment收到的内容", result.toString());
         mTvMsg.setText(result.toString());

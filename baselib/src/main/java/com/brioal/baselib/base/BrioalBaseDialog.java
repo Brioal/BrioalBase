@@ -2,6 +2,8 @@ package com.brioal.baselib.base;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -87,6 +89,8 @@ public abstract class BrioalBaseDialog {
         }
         if (getDialogBackGround() != null) {
             window.setBackgroundDrawable(getDialogBackGround());
+        } else {
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         if (getDialogWidth() != 0 && getDialogHeight() != 0) {
             window.setLayout(getDialogWidth(), getDialogHeight());
@@ -94,6 +98,7 @@ public abstract class BrioalBaseDialog {
         if (getWindowAnimations() != -1) {
             window.setWindowAnimations(getWindowAnimations());
         }
+        window.getDecorView().setPadding(0,0,0,0);
         mAlertDialog.setCancelable(canCancle);
     }
 

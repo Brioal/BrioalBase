@@ -82,6 +82,11 @@ public class ReceiverTestActivity extends BrioalBaseActivity implements BrioalOn
     }
 
     @Override
+    protected boolean isDialogCanCancel() {
+        return false;
+    }
+
+    @Override
     public void OnReceived(PersonBean result) {
         BLog.content("Activity收到的内容", result);
         showToast(result.toString());
