@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -92,11 +93,16 @@ public abstract class BrioalBaseFragment extends Fragment {
      * @param msg
      */
     protected void showToast(String msg) {
-        if (mToast == null) {
-            mToast = Toast.makeText(mContext, msg, Toast.LENGTH_SHORT);
+        try {
+            if (mToast == null) {
+                mToast = Toast.makeText(mContext, msg, Toast.LENGTH_SHORT);
+            }
+            Looper.prepare();
+            mToast.setText(msg);
+            mToast.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        mToast.setText(msg);
-        mToast.show();
     }
 
     /**
