@@ -97,9 +97,13 @@ public abstract class BrioalBaseFragment extends Fragment {
             if (mToast == null) {
                 mToast = Toast.makeText(mContext, msg, Toast.LENGTH_SHORT);
             }
-            Looper.prepare();
             mToast.setText(msg);
-            mToast.show();
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mToast.show();
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }

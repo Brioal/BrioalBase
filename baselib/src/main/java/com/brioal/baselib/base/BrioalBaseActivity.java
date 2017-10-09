@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -83,8 +82,13 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
                 mToast = Toast.makeText(mContext, msg, Toast.LENGTH_SHORT);
             }
             mToast.setText(msg);
-            Looper.prepare();
-            mToast.show();
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mToast.show();
+
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
