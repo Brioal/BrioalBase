@@ -1,10 +1,7 @@
 package com.brioal.baselib.base;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * BaseViewHolder
@@ -16,10 +13,8 @@ import android.view.ViewGroup;
 public abstract class BrioalBaseViewHolder<T> extends RecyclerView.ViewHolder {
     protected View mItemView;
 
-    public BrioalBaseViewHolder(Context context, int resID, ViewGroup parent) {
-        super(LayoutInflater.from(context).inflate(resID, parent, false));
-        mItemView = itemView;
-        initIDs();
+    public BrioalBaseViewHolder(View itemView) {
+        super(itemView);
     }
 
     /**
@@ -29,9 +24,4 @@ public abstract class BrioalBaseViewHolder<T> extends RecyclerView.ViewHolder {
      * @param position
      */
     protected abstract void bindView(T result, int position);
-
-    /**
-     * 实例化组件
-     */
-    protected abstract void initIDs();
 }

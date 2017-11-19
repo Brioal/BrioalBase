@@ -1,16 +1,17 @@
 package com.brioal.brioalbase;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 
 import com.brioal.baselib.base.BrioalBaseActivity;
 import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
 import com.brioal.baselib.base.BrioalBaseDialog;
+import com.brioal.baselib.interfaces.OnDialogActionListener;
 import com.brioal.baselib.utils.CacheUtil;
 import com.brioal.baselib.utils.DateFormatUtil;
 import com.brioal.baselib.utils.ListUtil;
 import com.brioal.baselib.utils.log.BLog;
-import com.brioal.brioalbase.list.TestListActivity;
 import com.brioal.brioalbase.receivetest.ReceiverTestActivity;
 
 import java.util.ArrayList;
@@ -80,12 +81,39 @@ public class MainActivity extends BrioalBaseActivity {
         BLog.e("测试");
     }
 
-    public void testAdapter(View view) {
-        startActivity(new Intent(this, TestListActivity.class));
-    }
-
     public void testDialog(View view) {
         MainDialog dialog = new MainDialog(mContext);
+        dialog.setDialogActionListener(new OnDialogActionListener() {
+            @Override
+            public void onDialogShow(DialogInterface dialogInterface) {
+                showToast("onDialogShow");
+            }
+
+            @Override
+            public void onDialogDismiss(DialogInterface dialogInterface) {
+                showToast("onDialogDismiss");
+            }
+
+            @Override
+            public void onDialogCancel(DialogInterface dialogInterface) {
+                showToast("onDialogCancel");
+            }
+
+            @Override
+            public void onAction1(Object result1) {
+                showToast("onAction1");
+            }
+
+            @Override
+            public void onAction2(Object result2) {
+                showToast("onAction2");
+            }
+
+            @Override
+            public void onAction3(Object result3) {
+                showToast("onAction3");
+            }
+        });
         dialog.showDialog();
     }
 

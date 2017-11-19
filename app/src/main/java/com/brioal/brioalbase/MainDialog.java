@@ -1,7 +1,6 @@
 package com.brioal.brioalbase;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
@@ -40,20 +39,6 @@ public class MainDialog extends BrioalBaseDialog {
         return 0;
     }
 
-    @Override
-    protected void onDialogDismissListener(DialogInterface dialogInterface) {
-
-    }
-
-    @Override
-    protected void onDialogCancelListener(DialogInterface dialogInterface) {
-
-    }
-
-    @Override
-    protected void onDialogShowListener(DialogInterface dialogInterface) {
-
-    }
 
     @Override
     protected void bindView(View contentView) {

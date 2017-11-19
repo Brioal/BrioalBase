@@ -10,6 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.brioal.baselib.R;
+import com.brioal.baselib.interfaces.OnDialogActionListener;
+import com.brioal.baselib.utils.StringUtil;
 
 /**
  * email:brioal@foxmail.com
@@ -23,9 +28,43 @@ public abstract class BrioalBaseDialog {
     protected Context mContext;
     protected String mMessage;
     private boolean canCancle = true;
+    private Toast mToast;
+
+    private OnDialogActionListener mDialogActionListener;
 
     public BrioalBaseDialog(Context context) {
         mContext = context;
+    }
+
+    /**
+     * 设置事件监听器
+     * @param dialogActionListener
+     * @return
+     */
+    public BrioalBaseDialog setDialogActionListener(OnDialogActionListener dialogActionListener) {
+        mDialogActionListener = dialogActionListener;
+        return this;
+    }
+
+    /**
+     * 显示提示信息
+     *
+     * @param errorMsg
+     */
+    protected void showToast(String errorMsg) {
+        if (!StringUtil.isAvailable(errorMsg)) {
+            return;
+        }
+        try {
+            if (mToast == null) {
+                mToast = Toast.makeText(mContext, errorMsg, Toast.LENGTH_SHORT);
+            } else {
+                mToast.setText(errorMsg);
+            }
+            mToast.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -58,21 +97,30 @@ public abstract class BrioalBaseDialog {
         mAlertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                onDialogShowListener(dialogInterface);
+                if (mDialogActionListener == null) {
+                    return;
+                }
+                mDialogActionListener.onDialogShow(dialogInterface);
             }
         });
         //隐藏监听器
         mAlertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
-                onDialogDismissListener(dialogInterface);
+                if (mDialogActionListener == null) {
+                    return;
+                }
+                mDialogActionListener.onDialogDismiss(dialogInterface);
             }
         });
         //返回监听器
         mAlertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialogInterface) {
-                onDialogCancelListener(dialogInterface);
+                if (mDialogActionListener == null) {
+                    return;
+                }
+                mDialogActionListener.onDialogCancel(dialogInterface);
             }
         });
         mAlertDialog.show();
@@ -97,8 +145,10 @@ public abstract class BrioalBaseDialog {
         }
         if (getWindowAnimations() != -1) {
             window.setWindowAnimations(getWindowAnimations());
+        } else {
+            window.setWindowAnimations(R.style.Animation_Bottom_Dialog);
         }
-        window.getDecorView().setPadding(0,0,0,0);
+        window.getDecorView().setPadding(0, 0, 0, 0);
         mAlertDialog.setCancelable(canCancle);
     }
 
@@ -149,28 +199,6 @@ public abstract class BrioalBaseDialog {
      * @return
      */
     protected abstract int getWindowAnimations();
-
-
-    /**
-     * 隐藏时候的监听器
-     *
-     * @param dialogInterface
-     */
-    protected abstract void onDialogDismissListener(DialogInterface dialogInterface);
-
-    /**
-     * 当返回的时候的监听器
-     *
-     * @param dialogInterface
-     */
-    protected abstract void onDialogCancelListener(DialogInterface dialogInterface);
-
-    /**
-     * dialog显示的时候的监听器
-     *
-     * @param dialogInterface
-     */
-    protected abstract void onDialogShowListener(DialogInterface dialogInterface);
 
     /**
      * 绑定View
