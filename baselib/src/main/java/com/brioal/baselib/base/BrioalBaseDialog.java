@@ -30,7 +30,7 @@ public abstract class BrioalBaseDialog {
     private boolean canCancle = true;
     private Toast mToast;
 
-    private OnDialogActionListener mDialogActionListener;
+    protected OnDialogActionListener mDialogActionListener;
 
     public BrioalBaseDialog(Context context) {
         mContext = context;
