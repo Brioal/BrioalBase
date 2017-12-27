@@ -27,7 +27,7 @@ public abstract class BrioalBaseDialog {
     protected View mRootView;
     protected Context mContext;
     protected String mMessage;
-    private boolean canCancle = true;
+    private boolean canCancel = true;
     private Toast mToast;
 
     protected OnDialogActionListener mDialogActionListener;
@@ -82,11 +82,11 @@ public abstract class BrioalBaseDialog {
     /**
      * 设置能否返回
      *
-     * @param canCancle
+     * @param canCancel
      * @return
      */
-    public BrioalBaseDialog setCanCancle(boolean canCancle) {
-        this.canCancle = canCancle;
+    public BrioalBaseDialog setCanCancel(boolean canCancel) {
+        this.canCancel = canCancel;
         return this;
     }
 
@@ -149,7 +149,7 @@ public abstract class BrioalBaseDialog {
             window.setWindowAnimations(R.style.Animation_Bottom_Dialog);
         }
         window.getDecorView().setPadding(0, 0, 0, 0);
-        mAlertDialog.setCancelable(canCancle);
+        mAlertDialog.setCancelable(canCancel);
     }
 
 

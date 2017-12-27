@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -171,7 +170,7 @@ public abstract class BrioalBaseFragment extends Fragment {
                     mLoadingDialog = new FlexLoadingDialog(mContext);
                 }
             }
-            mLoadingDialog.setMessage(msg).setCanCancle(isDialogCanCancel()).showDialog();
+            mLoadingDialog.setMessage(msg).setCanCancel(isDialogCanCancel()).showDialog();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -148,7 +148,7 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
                     mLoadingDialog = new FlexLoadingDialog(mContext);
                 }
             }
-            mLoadingDialog.setMessage(msg).setCanCancle(isDialogCanCancel()).showDialog();
+            mLoadingDialog.setMessage(msg).setCanCancel(isDialogCanCancel()).showDialog();
         } catch (Exception e) {
             e.printStackTrace();
         }
