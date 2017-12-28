@@ -30,7 +30,6 @@ public class MainActivity extends BrioalBaseActivity {
 
     @Override
     protected void initPresenter() {
-
     }
 
     @Override

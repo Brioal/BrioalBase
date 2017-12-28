@@ -23,5 +23,5 @@ public abstract class BrioalBaseViewHolder<T> extends RecyclerView.ViewHolder {
      * @param result
      * @param position
      */
-    protected abstract void bindView(T result, int position);
+    public abstract void bindView(T result, int position);
 }
