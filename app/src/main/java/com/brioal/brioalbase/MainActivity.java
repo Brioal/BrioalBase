@@ -127,7 +127,7 @@ public class MainActivity extends BrioalBaseActivity {
             list.add("QXC150373133866515049274311850");
             list.add("QXC150373133866515049274337660");
             CacheUtil<ArrayList<String>> cacheUtil = new CacheUtil<>();
-            cacheUtil.saveCache(MainActivity.this, list, "QXC150373133866515049269741840");
+//            cacheUtil.saveCache(MainActivity.this, list, "QXC150373133866515049269741840");
         } catch (Exception e) {
             e.printStackTrace();
         }

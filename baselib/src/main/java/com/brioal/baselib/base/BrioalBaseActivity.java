@@ -206,4 +206,11 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
      * @return
      */
     protected abstract boolean isDialogCanCancel();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLoadingDialog = null;
+        mContext = null;
+    }
 }
