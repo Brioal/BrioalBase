@@ -207,4 +207,10 @@ public abstract class BrioalBaseFragment extends Fragment {
      */
     protected abstract boolean isDialogCanCancel();
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mLoadingDialog = null;
+        mContext = null;
+    }
 }
