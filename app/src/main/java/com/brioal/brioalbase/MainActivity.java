@@ -11,6 +11,7 @@ import com.brioal.baselib.interfaces.OnDialogActionListener;
 import com.brioal.baselib.utils.CacheUtil;
 import com.brioal.baselib.utils.DateFormatUtil;
 import com.brioal.baselib.utils.ListUtil;
+import com.brioal.baselib.utils.LongTimeUtil;
 import com.brioal.baselib.utils.log.BLog;
 import com.brioal.brioalbase.receivetest.ReceiverTestActivity;
 
@@ -20,7 +21,7 @@ public class MainActivity extends BrioalBaseActivity {
 
     @Override
     protected void initData() {
-
+        BLog.e(LongTimeUtil.isToday(1515506682874L));
     }
 
     @Override
