@@ -77,8 +77,8 @@ public class CacheUtil<T> {
             return result;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
+        return result;
     }
 
     /**

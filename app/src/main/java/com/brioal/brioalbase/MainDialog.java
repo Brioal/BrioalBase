@@ -6,7 +6,6 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.brioal.baselib.base.BrioalBaseDialog;
-import com.brioal.baselib.utils.ScreenUtil;
 
 /**
  * email:brioal@foxmail.com
@@ -26,12 +25,12 @@ public class MainDialog extends BrioalBaseDialog {
 
     @Override
     protected int getDialogHeight() {
-        return ScreenUtil.getScreenHeight(mContext) / 2;
+        return 0;
     }
 
     @Override
     protected int getDialogWidth() {
-        return ScreenUtil.getScreenWidth(mContext);
+        return 0;
     }
 
     @Override
@@ -42,7 +41,6 @@ public class MainDialog extends BrioalBaseDialog {
 
     @Override
     protected void bindView(View contentView) {
-
     }
 
     @Override

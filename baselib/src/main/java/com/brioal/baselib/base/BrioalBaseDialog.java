@@ -142,6 +142,11 @@ public abstract class BrioalBaseDialog {
         }
         if (getDialogWidth() != 0 && getDialogHeight() != 0) {
             window.setLayout(getDialogWidth(), getDialogHeight());
+        } else {
+            WindowManager.LayoutParams lp = window.getAttributes();
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;   //设置宽度充满屏幕
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            window.setAttributes(lp);
         }
         if (getWindowAnimations() != -1) {
             window.setWindowAnimations(getWindowAnimations());
