@@ -4,10 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 
 /**
  * email:brioal@foxmail.com
@@ -16,6 +18,31 @@ import android.graphics.RectF;
  */
 
 public class BitmapUtil {
+
+
+    /**
+     * Drawable 转 Bitmap
+     *
+     * @param drawable
+     * @return
+     */
+    public static Bitmap convertFromDrawable(Drawable drawable) {
+        Bitmap bitmap = null;
+        try {
+            bitmap = Bitmap.createBitmap(
+                    drawable.getIntrinsicWidth(),
+                    drawable.getIntrinsicHeight(),
+                    drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+                            : Bitmap.Config.RGB_565);
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+            drawable.draw(canvas);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
     /**
      * 缩放图片
      *
@@ -59,6 +86,5 @@ public class BitmapUtil {
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
         return dstbmp;
-
     }
 }
