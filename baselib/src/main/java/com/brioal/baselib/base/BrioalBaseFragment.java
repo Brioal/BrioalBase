@@ -78,7 +78,6 @@ public abstract class BrioalBaseFragment extends Fragment {
         try {
             IntentFilter filter = new IntentFilter();
             String action = receiver.getAction();
-            BLog.title(action);
             filter.addAction(action);
             getContext().registerReceiver(receiver, filter);
         } catch (Exception e) {

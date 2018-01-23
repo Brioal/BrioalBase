@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.brioal.baselib.utils.SerializeUtil;
-import com.brioal.baselib.utils.log.BLog;
 import com.brioal.baselib.views.FlexLoadingDialog;
 
 
@@ -63,7 +62,6 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
         try {
             IntentFilter filter = new IntentFilter();
             String action = receiver.getAction();
-            BLog.title(action);
             filter.addAction(action);
             registerReceiver(receiver, filter);
         } catch (Exception e) {

@@ -60,16 +60,12 @@ public class CacheUtil<T> {
         T result = null;
         try {
             File targetFile = new File(context.getFilesDir().getAbsolutePath() + "/" + name);
-            BLog.content("缓存文件路径", targetFile.getAbsolutePath());
             if (!targetFile.exists()) {
-                BLog.title("缓存文件不存在,返回null");
                 return null;
             }
             String cacheStr = IOUtil.readStr(new FileInputStream(targetFile));
-            BLog.content("序列化的文件内容", cacheStr);
             CacheBean<T> bean = (CacheBean) SerializeUtil.deSerialize(cacheStr);
             if (bean == null) {
-                BLog.title("序列化之后的内容为空");
                 result = null;
             } else {
                 result = bean.getResult();
@@ -91,13 +87,10 @@ public class CacheUtil<T> {
     public boolean deleteCache(Context context, String name) {
         try {
             File targetFile = new File(context.getFilesDir().getAbsolutePath() + "/" + name);
-            BLog.content("要删除的缓存路径", targetFile);
             if (targetFile.exists()) {
-                BLog.title("缓存文件已存在,删除");
                 targetFile.delete();
                 return true;
             }
-            BLog.title("缓存文件不存在");
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,16 +109,13 @@ public class CacheUtil<T> {
     public boolean saveCache(Context context, T result, String name) {
         try {
             File targetFile = new File(context.getFilesDir().getAbsolutePath() + "/" + name);
-            BLog.content("缓存文件路径", targetFile.getAbsolutePath());
             if (targetFile.exists()) {
-                BLog.title("缓存文件已存在,删除");
                 targetFile.delete();
             }
             CacheBean bean = new CacheBean();
             bean.setResult(result);
             bean.setTime(System.currentTimeMillis());
             String cacheStr = SerializeUtil.serialize(bean);
-            BLog.content("序列化之后内容", cacheStr);
             BufferedWriter bw = new BufferedWriter(new FileWriter(targetFile));
             bw.write(cacheStr);
             bw.flush();
