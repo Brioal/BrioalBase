@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.brioal.baselib.R;
 import com.brioal.baselib.interfaces.OnDialogActionListener;
-import com.brioal.baselib.utils.StringUtil;
+import com.brioal.baselib.utils.TextUtil;
 
 /**
  * email:brioal@foxmail.com
@@ -52,7 +52,7 @@ public abstract class BrioalBaseDialog {
      * @param errorMsg
      */
     protected void showToast(String errorMsg) {
-        if (!StringUtil.isAvailable(errorMsg)) {
+        if (!TextUtil.isStringAvailable(errorMsg)) {
             return;
         }
         try {

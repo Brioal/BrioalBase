@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.brioal.baselib.R;
 import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.utils.ScreenUtil;
-import com.brioal.baselib.utils.StringUtil;
+import com.brioal.baselib.utils.TextUtil;
 
 /**
  * email:brioal@foxmail.com
@@ -50,7 +50,7 @@ public class FlexLoadingDialog extends BrioalBaseDialog {
         mFlexLoadingView = contentView.findViewById(R.id.dialog_flex_loading_view);
         mTvMsg = contentView.findViewById(R.id.dialog_flex_loading_text);
         mFlexLoadingView.setBackSrc(mContext.getResources().getDrawable(R.drawable.bg_gra_three)).setLinesCount(5);
-        if (StringUtil.isAvailable(mMessage)) {
+        if (TextUtil.isStringAvailable(mMessage)) {
             mTvMsg.setText(mMessage + "");
         } else {
             mTvMsg.setText("正在加载,请稍等");

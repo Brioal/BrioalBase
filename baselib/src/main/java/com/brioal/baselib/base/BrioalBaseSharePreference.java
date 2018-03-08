@@ -3,7 +3,7 @@ package com.brioal.baselib.base;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.brioal.baselib.utils.StringUtil;
+import com.brioal.baselib.utils.TextUtil;
 
 /**
  * 首选项基类
@@ -26,7 +26,7 @@ public abstract class BrioalBaseSharePreference {
      * 初始化首选项
      */
     private void initPreference() {
-        if (!StringUtil.isAvailable(getBrioalShareFerenceName())) {
+        if (!TextUtil.isStringAvailable(getBrioalShareFerenceName())) {
             return;
         }
         try {

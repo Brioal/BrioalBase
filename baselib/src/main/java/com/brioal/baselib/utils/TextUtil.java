@@ -19,6 +19,7 @@ public class TextUtil {
 
     /**
      * 给关键字设置颜色
+     *
      * @param textView
      * @param pattern
      * @param color
@@ -31,8 +32,10 @@ public class TextUtil {
         SpannableString ss = matcherSearchText(color, allText, pattern);
         textView.setText(ss);
     }
+
     /**
      * 匹配关键字,设置颜色
+     *
      * @param color
      * @param text
      * @param keyword
@@ -76,14 +79,16 @@ public class TextUtil {
      * @param textView
      */
     public static void setText(String front, String data, String error, TextView textView) {
-        if (isStringAvaliable(data)) {
+        if (isStringAvailable(data)) {
             //显示
             textView.setText(front + data);
         } else {
             //显示未知
             textView.setText(front + error);
         }
-    }/**
+    }
+
+    /**
      * @param front
      * @param data
      * @param error
@@ -110,10 +115,11 @@ public class TextUtil {
 
     /**
      * 判断字符串是否可用
+     *
      * @param str
      * @return
      */
-    public static boolean isStringAvaliableAddNull(String str){
+    public static boolean isStringAvaliableAddNull(String str) {
         if (str == null) {
             return false;
         }
@@ -124,12 +130,15 @@ public class TextUtil {
             return false;
         }
         return true;
-    } /**
+    }
+
+    /**
      * 判断字符串是否可用
+     *
      * @param str
      * @return
      */
-    public static boolean isStringAvaliable(String str){
+    public static boolean isStringAvailable(String str) {
         if (str == null) {
             return false;
         }
@@ -137,5 +146,58 @@ public class TextUtil {
             return false;
         }
         return true;
+    }
+
+
+    /**
+     * 是否全是英文
+     *
+     * @param str
+     * @return
+     */
+    public boolean isAllEn(String str) {
+        if (!isStringAvailable(str)) {
+            return false;
+        }
+        return str.matches("[a-zA-Z]+");
+    }
+
+    /**
+     * 是否全是中文
+     *
+     * @param str
+     * @return
+     */
+    public boolean isAllChinese(String str) {
+        if (!isStringAvailable(str)) {
+            return false;
+        }
+        char[] chs = str.toCharArray();
+        for (char ch : chs) {
+            if (!isChinese(ch)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 是否是中文字符
+     *
+     * @param c
+     * @return
+     */
+    public static boolean isChinese(char c) {
+        Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
+        if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+                || ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+                || ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+                || ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
+                || ub == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
+                || ub == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS
+                || ub == Character.UnicodeBlock.GENERAL_PUNCTUATION) {
+            return true;
+        }
+        return false;
     }
 }
