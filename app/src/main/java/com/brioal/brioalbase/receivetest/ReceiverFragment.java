@@ -8,7 +8,6 @@ import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
 import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.base.BrioalBaseFragment;
 import com.brioal.baselib.interfaces.BrioalOnReceivedListener;
-import com.brioal.baselib.utils.log.BLog;
 import com.brioal.brioalbase.PersonBean;
 import com.brioal.brioalbase.R;
 
@@ -77,7 +76,6 @@ public class ReceiverFragment extends BrioalBaseFragment implements BrioalOnRece
 
     @Override
     public void OnReceived(PersonBean result) {
-        BLog.content("Fragment收到的内容", result.toString());
         mTvMsg.setText(result.toString());
     }
 }

@@ -38,6 +38,7 @@ public abstract class BrioalBaseDialog {
 
     /**
      * 设置事件监听器
+     *
      * @param dialogActionListener
      * @return
      */
@@ -131,6 +132,9 @@ public abstract class BrioalBaseDialog {
         Window window = mAlertDialog.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         bindView(mRootView);
+        if (disTransparent()) {
+            window.getAttributes().dimAmount = 0;
+        }
         window.setContentView(mRootView);
         if (getGravity() != -1) {
             window.setGravity(getGravity());
@@ -176,6 +180,13 @@ public abstract class BrioalBaseDialog {
             mAlertDialog.dismiss();
         }
     }
+
+    /**
+     * 是否不显示半黑背景
+     *
+     * @return
+     */
+    protected abstract boolean disTransparent();
 
     /**
      * 返回窗口的背景

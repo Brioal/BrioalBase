@@ -9,7 +9,6 @@ import com.brioal.baselib.base.BrioalBaseActivity;
 import com.brioal.baselib.base.BrioalBaseBroadCastReceiver;
 import com.brioal.baselib.base.BrioalBaseDialog;
 import com.brioal.baselib.interfaces.BrioalOnReceivedListener;
-import com.brioal.baselib.utils.log.BLog;
 import com.brioal.brioalbase.PersonBean;
 import com.brioal.brioalbase.R;
 
@@ -88,7 +87,6 @@ public class ReceiverTestActivity extends BrioalBaseActivity implements BrioalOn
 
     @Override
     public void OnReceived(PersonBean result) {
-        BLog.content("Activity收到的内容", result);
         showToast(result.toString());
     }
 }

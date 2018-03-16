@@ -24,6 +24,11 @@ public class FlexLoadingDialog extends BrioalBaseDialog {
         super(context);
     }
 
+    @Override
+    protected boolean disTransparent() {
+        return false;
+    }
+
 
     @Override
     protected Drawable getDialogBackGround() {

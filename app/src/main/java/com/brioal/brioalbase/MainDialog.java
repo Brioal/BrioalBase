@@ -19,6 +19,11 @@ public class MainDialog extends BrioalBaseDialog {
     }
 
     @Override
+    protected boolean disTransparent() {
+        return false;
+    }
+
+    @Override
     protected Drawable getDialogBackGround() {
         return null;
     }

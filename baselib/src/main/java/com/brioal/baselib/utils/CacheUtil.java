@@ -2,7 +2,6 @@ package com.brioal.baselib.utils;
 
 import android.content.Context;
 
-import com.brioal.baselib.utils.log.BLog;
 
 import java.io.BufferedWriter;
 import java.io.File;

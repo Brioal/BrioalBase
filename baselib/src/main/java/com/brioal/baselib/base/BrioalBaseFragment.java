@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.brioal.baselib.utils.SerializeUtil;
-import com.brioal.baselib.utils.log.BLog;
 import com.brioal.baselib.views.FlexLoadingDialog;
 
 
