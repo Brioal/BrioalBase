@@ -43,7 +43,7 @@ public class GlideUtil {
     public void LoadImage(String url, ImageView imageView) {
 
         try {
-            Glide.with(mContext).load(url).asBitmap().error(R.drawable.ic_error).into(imageView);
+            Glide.with(mContext).load(url).into(imageView);
         } catch (Exception e) {
             e.printStackTrace();
         }
