@@ -19,6 +19,11 @@ import com.brioal.baselib.utils.TextUtil;
 public class FlexLoadingDialog extends BrioalBaseDialog {
     protected FlexLoadingView mFlexLoadingView;
     protected TextView mTvMsg;
+    private Drawable mBackDrawable;
+
+    public void setBackDrawable(Drawable backDrawable) {
+        mBackDrawable = backDrawable;
+    }
 
     public FlexLoadingDialog(Context context) {
         super(context);
@@ -54,7 +59,7 @@ public class FlexLoadingDialog extends BrioalBaseDialog {
     protected void bindView(View contentView) {
         mFlexLoadingView = contentView.findViewById(R.id.dialog_flex_loading_view);
         mTvMsg = contentView.findViewById(R.id.dialog_flex_loading_text);
-        mFlexLoadingView.setBackSrc(mContext.getResources().getDrawable(R.drawable.bg_gra_three)).setLinesCount(5);
+        mFlexLoadingView.setBackSrc(mBackDrawable).setLinesCount(5);
         if (TextUtil.isStringAvailable(mMessage)) {
             mTvMsg.setText(mMessage + "");
         } else {
