@@ -46,4 +46,11 @@ public interface JsonConvertUtil<T> {
      * @return
      */
     public boolean isSuccessed(String content);
+
+    /**
+     * 返回错误信息
+     * @param content
+     * @return
+     */
+    public String getErrorMsg(String content);
 }

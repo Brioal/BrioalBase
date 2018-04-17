@@ -112,7 +112,6 @@ public class RequestUtil<T> {
                             return;
                         }
                         if (mRequestListener.isOnlyCheckSuccess()) {
-
                             boolean result = mRequestListener.getJsonUtil().isSuccessed(content);
                             if (result) {
                                 response.close();
@@ -120,7 +119,7 @@ public class RequestUtil<T> {
                                 return;
                             } else {
                                 response.close();
-                                emitter.onError(new Exception("没有数据"));
+                                emitter.onError(new Exception(mRequestListener.getJsonUtil().getErrorMsg(content)));
                             }
                         }
                         T result = mRequestListener.getJsonUtil().getSingleData(content, mRequestListener.getEntity());
@@ -130,7 +129,7 @@ public class RequestUtil<T> {
                             emitter.onNext(result);
                         } else {
                             response.close();
-                            mRequestListener.failed("没有数据");
+                            emitter.onError(new Exception(mRequestListener.getJsonUtil().getErrorMsg(content)));
                         }
                     }
                 });
@@ -206,7 +205,7 @@ public class RequestUtil<T> {
                             emitter.onNext(result);
                         } else {
                             response.close();
-                            emitter.onError(new Exception("没有数据"));
+                            emitter.onError(new Exception(mRequestListener.getJsonUtil().getErrorMsg(content)));
                         }
                     }
                 });
