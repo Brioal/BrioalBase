@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.brioal.baselib.utils.AppManager;
 import com.brioal.baselib.utils.SerializeUtil;
 import com.brioal.baselib.views.FlexLoadingDialog;
 
@@ -26,11 +27,18 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
     protected Handler mHandler = new Handler();
     private BrioalBaseDialog mLoadingDialog = null;
 
+    /**
+     * 退出应用
+     */
+    protected void exit() {
+        AppManager.getAppManager().finishAllActivity();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         doInOnCreateBeforeSuper();
         super.onCreate(savedInstanceState);
+        AppManager.getAppManager().addActivity(this);
         mContext = this;
         int id = getLayoutID();
         if (id != 0) {
@@ -208,6 +216,7 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        AppManager.getAppManager().finishActivity(this);
         mLoadingDialog = null;
         mContext = null;
     }
