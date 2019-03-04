@@ -13,7 +13,7 @@
 ## 最新版本号 [![](https://jitpack.io/v/Brioal/BrioalBase.svg)](https://jitpack.io/#Brioal/BrioalBase)
 ```
 	dependencies {
-		compile 'com.github.Brioal:BrioalBase:4.0'
+		compile 'com.github.Brioal:BrioalBase:5.4'
 	}
 ```
 
