@@ -36,8 +36,8 @@ public abstract class BrioalBaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        doInOnCreateBeforeSuper();
         super.onCreate(savedInstanceState);
+        doInOnCreateBeforeSuper();
         AppManager.getAppManager().addActivity(this);
         mContext = this;
         int id = getLayoutID();
